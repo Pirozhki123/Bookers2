@@ -43,5 +43,25 @@
         </div>
       <% end %>
     </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= @books.each do |book| %>
+            <td>
+              <%= image_tag book.user.get_prfile_image(100,100) %>
+            </td>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
