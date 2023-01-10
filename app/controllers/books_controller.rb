@@ -1,4 +1,13 @@
 class BooksController < ApplicationController
+  before_action :is_matching_login_user_on_book, only: [:edit, :update]
+
+  def is_matching_login_user_on_book
+    book_id = Book.find(params[:id]).user.id
+    unless book_id == current_user.id
+      redirect_to books_path
+    end
+  end
+
   def index
     @user = current_user
     @books = Book.all
@@ -13,6 +22,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+
     @book = Book.find(params[:id])
   end
 
